@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mobileguard-engine"
+version = "0.1.0"
+description = "Detection-only machine-learning engine for PaySim mobile money fraud risk"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "MobileGuard contributors" }]
+dependencies = [
+    "joblib>=1.4,<2",
+    "numpy>=2.0,<3",
+    "pandas>=2.2,<4",
+    "pyarrow>=17,<23",
+    "requests>=2.32,<3",
+    "scikit-learn>=1.6,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3,<10",
+    "pytest-cov>=6,<8",
+]
+
+[project.scripts]
+mobileguard = "mobileguard.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
